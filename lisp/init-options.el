@@ -11,6 +11,7 @@
                 tool-bar-mode
                 scroll-bar-mode
                 electric-indent-mode
+                menu-bar-mode
                 ))
   (funcall mode -1))
 

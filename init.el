@@ -38,10 +38,9 @@
 (require 'init-options)
 (require 'init-appearance)
 ;; QoL
+(require 'init-ivy)
 (require 'init-direnv)
 (require 'init-lsp)
-(require 'init-ivy)
-(require 'init-counsel)
 (require 'init-evil)
 (require 'init-treesitter)
 (require 'init-company)
@@ -50,11 +49,7 @@
 ;; Modes
 (require 'init-nix)
 
-(use-package tuareg)
-
-
 (add-to-list 'default-frame-alist '(undecorated-round . t))
-
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (if (file-exists-p custom-file) 
