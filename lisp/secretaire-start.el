@@ -6,7 +6,8 @@
 (when (version< emacs-version "27.0") (package-initialize))
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("elpa" . "https://elpa.gnu.org/packages/")
+                         ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
 (unless (package-installed-p 'no-littering)
   (package-refresh-contents)
@@ -29,7 +30,8 @@
 (setq-default use-package-always-ensure t)
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(if (file-exists-p custom-file) 
+(if (file-exists-p custom-file)
     (load custom-file))
 
 (provide 'secretaire-start)
+;;; secretaire-start.el ends here
