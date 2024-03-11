@@ -1,5 +1,11 @@
-(when (find-font (font-spec :family "Iosevka")) 
-  (set-frame-font "Iosevka-14" nil t))
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
+
+(when (find-font (font-spec :family "Iosevka"))
+  (cond
+   ((eq system-type 'darwin) (set-frame-font "Iosevka-14" nil t))
+   ((eq system-type 'gnu/linux) (set-frame-font "Iosevka-12" nil t))))
 
 (use-package all-the-icons)
 
@@ -10,3 +16,4 @@
   :config (modus-themes-select 'modus-vivendi))
 
 (provide 'init-appearance)
+;;; init-appearance ends here.

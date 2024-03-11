@@ -1,7 +1,7 @@
 ;;; package --- Summary
 ;;; Commentary:
 ;;; Code:
-;;(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
 (defun add-subdirectories-to-load-path (dir)
   "Add DIR and its subdirectories to `load-path`."
   (add-to-list 'load-path dir)
@@ -10,35 +10,44 @@
       (add-subdirectories-to-load-path item))))
 
 (add-subdirectories-to-load-path (expand-file-name "lisp" user-emacs-directory))
+(add-subdirectories-to-load-path (expand-file-name "modules" user-emacs-directory))
 
 (require 'secretaire-start)
 (require 'secretaire-lib)
 (require 'secretaire-ui)
+(require 'secretaire-keybinds)
+
+(custom-set-faces
+ '(highlight ((t (:background "#ff0000")))))
+
+
+;;; modules/checkers
+(require 'syntax-config)
+;;; modules/completion
+(require 'company-config)
+(require 'ivy-config)
+;; modules/editor
+(require 'init-evil)
 
 ;; Base
 (require 'init-options)
-(require 'init-appearance)
 ;; Completion
-(require 'init-company)
-(require 'init-ivy)
+;; (require 'init-company)
 
 ;;
 ;; (require 'init-direnv)
 ;; (require 'init-lsp)
-(require 'init-evil)
 ;; (require 'init-treesitter)
 
 ;; Syntax
-(require 'init-flycheck)
 
 ;; (require 'init-hydra)
 ;; (require 'init-projectile)
 ;; Modes
 ;; (require 'init-nix)
-(use-package yasnippet
-  :init
-  (yas-global-mode))
-
+;; (use-package yasnippet
+;;   :init
+;;   (yas-global-mode))
 (use-package web-mode
   :mode "\\.html?\\'"
   :mode "\\.css\\'"
