@@ -1,4 +1,4 @@
-;;; evil-ui --- Summary
+;;; evil-config --- Summary
 ;;; Code:
 ;;; Commentary:
 

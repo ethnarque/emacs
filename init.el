@@ -1,65 +1,59 @@
-;;; package --- Summary
+;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
 ;;; Commentary:
+
+;; This file bootstraps the configuration, which is divided into
+;; a number of other files.
+
 ;;; Code:
 
-(defun add-subdirectories-to-load-path (dir)
-  "Add DIR and its subdirectories to `load-path`."
-  (add-to-list 'load-path dir)
-  (dolist (item (directory-files dir t "\\w+"))
-    (when (and (file-directory-p item) (not (string-prefix-p "." (file-name-nondirectory item))))
-      (add-subdirectories-to-load-path item))))
+;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
+;;(setq debug-on-error t)
+(let ((minver "27.1"))
+  (when (version< emacs-version minver)
+    (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
+(when (version< emacs-version "28.1")
+  (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
-(add-subdirectories-to-load-path (expand-file-name "lisp" user-emacs-directory))
-(add-subdirectories-to-load-path (expand-file-name "modules" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'init-benchmarking)
 
-(require 'secretaire-start)
-(require 'secretaire-lib)
-(require 'secretaire-ui)
-(require 'secretaire-keybinds)
+(defconst *is-a-mac (eq system-type 'darwin))
 
-(custom-set-faces
- '(highlight ((t (:background "#ff0000")))))
+(set-frame-font "Iosevka-14" nil t)
+(add-to-list 'default-frame-alist '(undecorated-round . t))
 
 
-;;; modules/checkers
-(require 'syntax-config)
-;;; modules/completion
-(require 'company-config)
-(require 'ivy-config)
-;; modules/editor
+;; Ajust garbage collection threshold for early startup (use of gcmh below)
+(setq gc-cons-threshold (* 128 1024 1024))
+(setq process-adaptive-read-buffering nil)
+
+;; Bootstrap config
+(setq custom-file (locate-user-emacs-file "custom.el"))
+(require 'init-utils)
+(require 'init-site-lisp)
+(require 'init-elpa)
+;;(require 'init-no-littering)
+;;(require 'init-exec-path) ;; Set up $PATH
+
+
+;; General performance tuning
+(when (use-package gcmh)
+  (setq gcmh-high-cons-threshold (* 128 1024 1024))
+  (add-hook 'after-init-hook (lambda ()
+                               (gcmh-mode)
+                               (diminish 'gcmh-mode))))
+
+(setq jit-lock-defer-time 0)
+
+;;; Load some needed package with no config
+(use-package diminish)
+
+(require 'init-gui)
+(require 'init-envrc)
+(require 'init-flymake)
+
+(require 'init-lisp)
+
+(require 'init-corfu)
 (require 'init-evil)
-
-;; Base
-(require 'init-options)
-;; Completion
-;; (require 'init-company)
-
-;;
-;; (require 'init-direnv)
-;; (require 'init-lsp)
-;; (require 'init-treesitter)
-
-;; Syntax
-
-;; (require 'init-hydra)
-;; (require 'init-projectile)
-;; Modes
-;; (require 'init-nix)
-;; (use-package yasnippet
-;;   :init
-;;   (yas-global-mode))
-(use-package web-mode
-  :mode "\\.html?\\'"
-  :mode "\\.css\\'"
-  :mode "\\.phtml\\'"
-  :mode "\\.tpl\\.php\\'"
-  :mode "\\.[agj]sp\\'"
-  :mode "\\.as[cp]x\\'"
-  :mode "\\.erb\\'"
-  :mode "\\.mustache\\'"
-  :mode "\\.djhtml\\'"
-  :config
-  (setq web-mode-markup-indent-offset 2
-        web-mode-css-indent-offset 2
-        web-mode-code-indent-offset 2))
-;;; init.el ends here.
+;;; init.el ends here
