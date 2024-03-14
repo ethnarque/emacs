@@ -33,7 +33,7 @@
 (require 'init-site-lisp)
 (require 'init-elpa)
 ;;(require 'init-no-littering)
-;;(require 'init-exec-path) ;; Set up $PATH
+(require 'init-exec-path) ;; Set up $PATH
 
 
 ;; General performance tuning
@@ -49,11 +49,18 @@
 (use-package diminish)
 
 (require 'init-gui)
+(require 'init-editing)
+(require 'init-paredit)
 (require 'init-envrc)
 (require 'init-flymake)
+(require 'init-sessions)
 
+(require 'init-eglot)
+(require 'init-treesitter)
+(require 'init-nix)
 (require 'init-lisp)
 
+(require 'init-minibuffer)
 (require 'init-corfu)
 (require 'init-evil)
 ;;; init.el ends here

@@ -1,9 +1,0 @@
-(setq inhibit-startup-screen t)
-
-(setq-default window-resize-pixelwise t
-	      frame-resize-pixelwise t)
-
-(when (fboundp 'tool-bar-mode)
-  (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode)
-  (scroll-bar-mode nil))
