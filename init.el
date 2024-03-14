@@ -17,11 +17,6 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-benchmarking)
 
-(defconst *is-a-mac (eq system-type 'darwin))
-
-(set-frame-font "Iosevka-14" nil t)
-(add-to-list 'default-frame-alist '(undecorated-round . t))
-
 
 ;; Ajust garbage collection threshold for early startup (use of gcmh below)
 (setq gc-cons-threshold (* 128 1024 1024))
