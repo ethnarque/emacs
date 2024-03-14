@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
+
 (setq inhibit-startup-screen t)
 
 (setq-default window-resize-pixelwise t
@@ -22,6 +23,15 @@
   (pixel-scroll-precision-mode))
 
 
+;; System specific tweeks
+(if (eq system-type 'darwin)
+    (progn
+      (set-frame-font "Iosevka-14" nil t)
+      (add-to-list 'default-frame-alist '(undecorated-round .t)))
+  (progn
+    (set-frame-font "Iosevka-11" nil t)))
+
+
 (use-package modus-themes
   :ensure t
   :config
@@ -38,6 +48,8 @@
 
   (define-key global-map (kbd "<f5>") #'modus-themes-toggle))
 
+
+;;; Ligatures
 (use-package ligature
   :hook (prog-mode . global-ligature-mode)
   :init
