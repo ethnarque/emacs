@@ -40,7 +40,6 @@ Return a list of languages seen along the way."
 
 (secretaire/auto-configure-treesitter)
 
-
 ;;; Support remapping of additional libraries
 
 (defun secretaire/remap-ts-mode (non-ts-mode ts-mode grammar)
@@ -57,6 +56,17 @@ Return a list of languages seen along the way."
 
 ;; Default
 (setq treesit-font-lock-level 4)
+
+(setq major-mode-remap-alist
+      '((bash-mode . bash-ts-mode)
+        (css-mode . css-ts-mode)
+        (javascript-mode . js-ts-mode)
+        (js2-mode . js-ts-mode)
+        (json-mode . json-ts-mode)
+        (python-mode . python-ts-mode)
+        (typescript-mode . typescript-ts-mode)
+        (yaml-mode . yaml-ts-mode)))
+
 
 (provide 'init-treesitter)
 ;;; init-treesitter.el ends here
