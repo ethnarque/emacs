@@ -3,7 +3,7 @@
 ;;; Code:
 
 (use-package eglot)
-(use-package consult-eglot)
+;; (use-package consult-eglot)
 
 (provide 'init-eglot)
 ;;; init-eglot.el ends here

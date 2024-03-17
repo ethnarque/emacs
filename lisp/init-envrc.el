@@ -5,5 +5,4 @@
 
 (use-package envrc
   :hook (after-init . secretaire/maybe-enable-envrc-global-mode))
-
-(provide 'init-envrc)
+;;; init-envrc.el ends here.

@@ -74,4 +74,18 @@
                                        "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
                                        "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
                                        "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%")))
+
+(defun secretaire/frame-recenter (&optional frame)
+  "This is a comment with FRAME."
+  (unless (eq 'maximised (frame-parameter nil 'fullscreen))
+    (modify-frame-parameters
+     frame '((user-position . t) (top . 0.5) (left . 0.5)))))
+
+(defun secretaire/gui-startup-hook ()
+  "This is my startup."
+  (when (display-graphic-p)
+    (set-frame-size (selected-frame) (floor(/ (* (x-display-pixel-width) 0.5) 10)) 50)
+    (secretaire/frame-recenter (selected-frame))))
+
+(add-hook 'emacs-startup-hook 'secretaire/gui-startup-hook)
 ;;; init-gui.el ends here

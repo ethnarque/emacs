@@ -2,5 +2,4 @@
 ;;; Commentary:
 ;;; Code:
 
-(provide 'init-javascript)
-;;; init-js.el ends here
+;;; init-javascript.el ends here.

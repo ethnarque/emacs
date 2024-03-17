@@ -14,6 +14,4 @@
 	       '((nix-mode nix-ts-mode) . ("nil"))))
 
 (use-package nixpkgs-fmt)
-
-(provide 'init-nix)
 ;;; init-nix.el ends here

@@ -16,7 +16,7 @@
             "M-l" #'corfu-show-location
             "M-SPC" #'corfu-insert-separator)
   :custom
-  (corfu-auto t)
+  (corfu-auto nil)
   (corfu-cycle t)
 
   (corfu-auto-prefix 2)
@@ -24,7 +24,7 @@
 
   (corfu-min-width 50)
   (corfu-max-width corfu-min-width)
-  ;; (corfu-preselect 'prompt)
+  (corfu-preselect 'prompt)
   (corfu-quit-at-boundary 'separator)
   ;; (corfu-separator ?\s)
   (corfu-quit-no-match 'separator) ; Don't quit if there is `corfu-separator' inserted
@@ -91,13 +91,6 @@
   :init
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
-
-(use-package which-key
-  :diminish t
-  :hook (after-init . which-key-mode)
-  :init
-  (setq-default which-key-idle-delay 1.5))
-
 ;; (use-package embark
 ;;   :bind
 ;;   ("C-." . embark-act)
@@ -125,8 +118,4 @@
 ;;     "Open marked or current file in operating system's default application."
 ;;     (interactive "P")
 ;;     (dired-map-over-marks (embark-open-externally (dired-get-filename)) arg)))
-
-
-
-(provide 'init-corfu)
 ;;; init-corfu.el ends here

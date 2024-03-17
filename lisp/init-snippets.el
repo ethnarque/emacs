@@ -4,11 +4,11 @@
 
 (use-package yasnippet
   :diminish yas-minor-mode
+  :hook (after-init . yas-global-mode)
   :custom (yas-keymap-disable-hook
            (lambda () (and (frame-live-p corfu--frame)
                            (frame-visible-p corfu--frame)))
            (yas-snippet-dirs '("~/.emacs.d/snippets/"))))
-  :hook (after-init . yas-global-mode))
 
 (use-package consult-yasnippet
   :bind ("M-*" . consult-yasnippet))

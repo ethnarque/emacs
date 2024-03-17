@@ -29,18 +29,9 @@
   :hook
   (after-init . vertico-mode)
   :config
-  (vertico-multiform-mode)
+  (vertico-multiform-mode))
 
   ;; Prefix the current candidate with “» ”. From
-  ;; https://github.com/minad/vertico/wiki#prefix-current-candidate-with-arrow
-  (advice-add #'vertico--format-candidate :around
-              (lambda (orig cand prefix suffix index _start)
-                (setq cand (funcall orig cand prefix suffix index _start))
-                (concat
-                 (if (= vertico--index index)
-                     (propertize "» " 'face 'vertico-current)
-                   "  ")
-                 cand))))
 
 (use-package orderless
   :custom
@@ -69,6 +60,7 @@
 
 
 (use-package marginalia
+  :hook (after-init . marginalia-mode)
   :general
   (:keymaps 'minibuffer-local-map
             "M-A" 'marginalia-cycle)
@@ -82,12 +74,17 @@
 
 (use-package all-the-icons-completion
   :after (marginalia all-the-icons)
-  :commads (all-the-icons-completion-mode)
-  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :commands (all-the-icons-completion-mode)
+  :hook
+  (marginalia-mode . all-the-icons-completion-marginalia-setup)
   :init
   (all-the-icons-completion-mode))
 
-(use-package consult)
+;;   :after (marginalia all-the-icons)
+;;   :commands (all-the-icons-completion-mode)
+;;   :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+;;   :init
+;;   (all-the-icons-completion-mode))
 
 
 (use-package embark
@@ -103,6 +100,4 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-
-(provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here

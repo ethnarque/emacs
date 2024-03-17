@@ -47,8 +47,7 @@
     (straight-use-package 'no-littering)))
 
 
-;; It's time to install `use-package' and make `straight.el' use it as default
-
+;; Install `use-package' and make `straight.el' use it as default
 (if (package-installed-p 'use-package)
     (progn
       (require 'use-package)
@@ -58,7 +57,7 @@
     (straight-use-package 'use-package)))
 
 
-;; Setup $PATH
+;; Inject $PATH for emacs
 (use-package exec-path-from-shell
   :commands (exec-path-from-shell-initialize
              exec-path-from-shell-variables)
@@ -89,15 +88,6 @@
   :init (general-override-mode))
 
 ;;; After the minimal viable is loaded this is time to load all the components !
-
-;; (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-
-(defun secretaire/frame-recenter (&optional frame)
-  "This is a comment with FRAME."
-  (unless (eq 'maximised (frame-parameter nil 'fullscreen))
-    (modify-frame-parameters
-     frame '((user-position . t) (top . 0.5) (left . 0.5)))))
-
 (setq-local user-files '(;; static checkers
                          "flymake" "eglot"
                          ;;
@@ -111,20 +101,8 @@
                          ;; languages
                          "html" "javascript" "nix"))
 
+
 (dolist (file-name user-files)
   (load-file
    (expand-file-name (format "lisp/init-%s.el" file-name) user-emacs-directory)))
-
-(when (display-graphic-p)
-  (set-frame-size (selected-frame) (floor(/ (* (x-display-pixel-width) 0.95) 10)) 50)
-  (secretaire/frame-recenter (selected-frame)))
-
-;; ;; (require 'init-sessions)
-;; ;;(require 'init-eglot)
-;; ;; (require 'init-nix)
-;; ;; (require 'init-lisp)
-;; ;; (require 'init-html)
-;; ;; (require 'init-javascript)
-;; 
-;; ;; (require 'init-corfu)
 ;;; init.el ends here

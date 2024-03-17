@@ -54,8 +54,7 @@ Return a list of languages seen along the way."
 (secretaire/remap-ts-mode 'clojurescript-mode 'clojurescript-ts-mode 'clojure)
 
 
-;; Default
-(setq treesit-font-lock-level 4)
+(setq-default treesit-font-lock-level 4)
 
 (setq major-mode-remap-alist
       '((bash-mode . bash-ts-mode)
@@ -66,7 +65,4 @@ Return a list of languages seen along the way."
         (python-mode . python-ts-mode)
         (typescript-mode . typescript-ts-mode)
         (yaml-mode . yaml-ts-mode)))
-
-
-(provide 'init-treesitter)
 ;;; init-treesitter.el ends here

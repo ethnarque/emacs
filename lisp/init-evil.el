@@ -21,6 +21,4 @@
   (setq evil-collection-setup-minibuffer t)
   :init
   (evil-collection-init))
-
-(provide 'init-evil)
 ;;; init-evil.el ends here
