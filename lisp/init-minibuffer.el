@@ -82,6 +82,7 @@
 
 (use-package all-the-icons-completion
   :after (marginalia all-the-icons)
+  :commads (all-the-icons-completion-mode)
   :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
   :init
   (all-the-icons-completion-mode))

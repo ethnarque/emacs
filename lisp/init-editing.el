@@ -33,7 +33,4 @@
   (bind-key "C-+" 'mc/mark-next-like-this)
   (bind-key "C-c C-<" 'mc/mark-all-like-this)
   (bind-key "C-M-<backspace>" 'kill-back-to-indentation))
-
-
-(provide 'init-editing)
 ;;; init-editing.el ends here

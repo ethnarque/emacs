@@ -25,10 +25,10 @@
   (corfu-min-width 50)
   (corfu-max-width corfu-min-width)
   ;; (corfu-preselect 'prompt)
-  ;; (corfu-quit-at-boundary 'separator)
+  (corfu-quit-at-boundary 'separator)
   ;; (corfu-separator ?\s)
-  ;; (corfu-quit-no-match 'separator) ; Don't quit if there is `corfu-separator' inserted
-  ;; (corfu-preview-current 'insert)  ; Preview current candidate?
+  (corfu-quit-no-match 'separator) ; Don't quit if there is `corfu-separator' inserted
+  (corfu-preview-current 'insert)  ; Preview current candidate?
         
   ;; (corfu-on-exact-match 'show)
   ;; Works with `indent-for-tab-command'. Make sure tab doesn't indent when you
@@ -37,13 +37,12 @@
   ;; (completion-cycle-threshold nil)      ; Always show all candidates in popup menu
   :hook (eshell-mode . (lambda () (setq-local corfu-auto nil)))
   :config
-  (evil-make-overriding-map corfu-map)
+  ;; (evil-make-overriding-map corfu-map)
   ;; (advice-add 'corfu--setup :after 'evil-normalize-keymaps)
   ;; (advice-add 'corfu--teardown :after 'evil-normalize-keymaps)
   ;; (general-add-advice '(corfu--setup corfu--teardown) :after 'evil-normalize-keymaps)
   )
 (use-package embark
-
   :init)
 
 (use-package cape

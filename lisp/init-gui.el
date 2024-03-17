@@ -1,7 +1,6 @@
-;;; init-gui.el --- Insert description here -*- lexical-binding: t -*-
+;;; init-gui.el --- Managing GUI related settings -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-
 
 (setq inhibit-startup-screen t)
 
@@ -19,17 +18,19 @@
   (add-to-list 'default-frame-alist no-border)
   (add-to-list 'initial-frame-alist no-border))
 
-(when (fboundp 'pixel-scroll-precision-mode)
-  (pixel-scroll-precision-mode))
 
+(use-package all-the-icons)
 
 ;; System specific tweeks
-(if (eq system-type 'darwin)
+(let ((font-name "Iosevka SS05"))
+  (if (eq system-type 'darwin)
+      (progn
+        (set-frame-font (format "%s-14" font-name) nil t)
+        (setq-default ns-use-thin-smoothing t
+                      ns-use-mwheel-momentum t)
+        (add-to-list 'default-frame-alist '(undecorated-round .t)))
     (progn
-      (set-frame-font "Iosevka-14" nil t)
-      (add-to-list 'default-frame-alist '(undecorated-round .t)))
-  (progn
-    (set-frame-font "Iosevka-11" nil t)))
+      (set-frame-font (format "%s-14" font-name) nil t))))
 
 
 (use-package modus-themes
@@ -43,8 +44,17 @@
   (setq modus-themes-common-palette-overrides
         modus-themes-preset-overrides-faint)
 
+  (mapc #'disable-theme custom-enabled-themes)
   ;; Load the theme of your choice.
-  (load-theme 'modus-operandi)
+  ;; (load-theme 'modus-operandi :no-confirm)
+  (when (eq system-type 'darwin)
+    (defun secretaire/apply-theme (appearance)
+      "Load theme, taking current system APPEARANCE into consideration."
+      (mapc #'disable-theme custom-enabled-themes)
+      (pcase appearance
+        ('light (load-theme 'modus-operandi t))
+        ('dark (load-theme 'modus-vivendi t))))
+    (add-hook 'ns-system-appearance-change-functions #'secretaire/apply-theme))
 
   (define-key global-map (kbd "<f5>") #'modus-themes-toggle))
 
@@ -64,5 +74,4 @@
                                        "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
                                        "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
                                        "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%")))
-(provide 'init-gui)
 ;;; init-gui.el ends here
