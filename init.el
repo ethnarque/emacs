@@ -14,6 +14,7 @@
 
 ;; First, preparing and bootstraping `straight.el' in order to manage package installation
 (setq-default straight-repository-branch "develop")
+
  
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -35,6 +36,7 @@
 ;; in `user-emacs-directory'.
 
 (setq custom-file (locate-user-emacs-file "custom.el"))
+(load custom-file 'noerror 'nomessage)
 
 (if (package-installed-p 'no-littering)
     (progn
