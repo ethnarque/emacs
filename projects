@@ -1,3 +1,5 @@
 ;;; -*- lisp-data -*-
-(("/Users/pml/Documents/Code/html-components/")
- ("/Users/pml/.emacs.d/"))
+(("/Users/pml/.config/emacs/")
+ ("/Users/pml/Documents/Code/templates/")
+ ("/Users/pml/Documents/Code/templates/wordpress-hello/")
+ ("/Users/pml/Documents/Code/html-components/"))

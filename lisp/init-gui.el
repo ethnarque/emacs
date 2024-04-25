@@ -22,7 +22,7 @@
 (use-package all-the-icons)
 
 ;; System specific tweeks
-(let ((font-name "Iosevka SS05"))
+(let ((font-name "Iosevkarque"))
   (if (eq system-type 'darwin)
       (progn
         (set-frame-font (format "%s-14" font-name) nil t)

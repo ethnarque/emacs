@@ -1,0 +1,13 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("6c95d3f46f12ece522a83e5ee85b453b870a1baaeb990afb63da4a88a2f7e2cd" "b84cd310b0702400d7ecc3b65467d55e8d4ab7dab742b583aa27e61425cb45c5" "041becb24ced3f06b7c0856722a940a6f2c31a04820e5231b7ef885b6d9f3af4" "2340bf0d7cf0add76b46f3b47e73f7928829eb28a0c7da1a23012d7a40e89741" "bfb3aeac69651e3021ff4f1165257736fc27ad1edb8455e0d499803e22c2019f" "2d016ab47288decad4d047e24865c260c6861d6f19b2d67b024f6345f48610da" "8a34a26d5e80c6d377d27fc02b87b8bc9676116848698045860004efa1fd4880" "362a2498864ceeb623b4c37e14e6c85b22a32f3750104551ff52e229d54a625a" "5fde8adb0ea18cbdcb843b6ad331aa494419d764cf91011c43a1301665113e65" "01d61d46e77adac421bed3d4ed375be04737dd9d638f0ddee86bbe350cbaa9e7" "1fc6a7cde4eec48cd8c5c9a439d505acb31e502660d5de989914f56757f55362" "5f777ba413ef355fbd22059571bd87562ecb1a16acacc4c380d2a0b9a7f5c044" "218f5bc7acc25dd76ab15876a5743c0fc5b9ec3386258d3f7f28a0a8d8f5148f" "2581640c3eb87536f8de6aac6876e22efdfca89de4ea426238eb5402857db899" "395630fb8d8beebc92b48428e0afb82dc623cd6a572872139c3aead38f83d694" "fce41dc0128c794591389cca487badcbceca43fdcd52f50d18e97ad699f09a8d" "59c4099609392162941188de39a4451af408c2de1dde4a8b6256f1009277e2f2" default)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
